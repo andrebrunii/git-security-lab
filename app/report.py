@@ -1,18 +1,9 @@
-"""Esempio volutamente vulnerabile per il laboratorio di analisi statica."""
+"""Versione sicura: il nome viene trattato esclusivamente come testo."""
 import argparse
-import subprocess
 
 
 def render_report(name: str) -> str:
-    # VULNERABILITA: input esterno concatenato a un comando interpretato dalla shell.
-    result = subprocess.run(
-        f"echo Report per: {name}",
-        shell=True,
-        capture_output=True,
-        text=True,
-        check=True,
-    )
-    return result.stdout.strip()
+    return f"Report per: {name}"
 
 
 def main() -> None:
